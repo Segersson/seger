@@ -4,8 +4,13 @@ document.getElementById('chat-form').addEventListener('submit', function (e) {
     const fråga = input.value;
     const logg = document.getElementById('chatlog');
 
-    // Visa frågan
-    logg.innerHTML += `<p><strong>Du:</strong> ${fråga}</p>`;
+    // Visa frågan utan att tolka eventuellt HTML-innehåll
+    const frågap = document.createElement('p');
+    const användarStrong = document.createElement('strong');
+    användarStrong.textContent = 'Du:';
+    frågap.appendChild(användarStrong);
+    frågap.append(' ' + fråga);
+    logg.appendChild(frågap);
 
     // Ge ett fördefinierat "låtsassvar"
     let svar = "Jag är en prototyp. Snart kan jag svara på juridiska frågor om nya lagen.";
