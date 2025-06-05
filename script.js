@@ -4,8 +4,13 @@ document.getElementById('chat-form').addEventListener('submit', function (e) {
     const fråga = input.value;
     const logg = document.getElementById('chatlog');
 
-    // Visa frågan
-    logg.innerHTML += `<p><strong>Du:</strong> ${fråga}</p>`;
+    // Visa frågan utan att tillåta HTML-injektion
+    const userP = document.createElement('p');
+    const userStrong = document.createElement('strong');
+    userStrong.textContent = 'Du:';
+    userP.appendChild(userStrong);
+    userP.appendChild(document.createTextNode(' ' + fråga));
+    logg.appendChild(userP);
 
     // Ge ett fördefinierat "låtsassvar"
     let svar = "Jag är en prototyp. Snart kan jag svara på juridiska frågor om nya lagen.";
@@ -16,7 +21,12 @@ document.getElementById('chat-form').addEventListener('submit', function (e) {
     }
 
     // Visa svar
-    logg.innerHTML += `<p><strong>Bot:</strong> ${svar}</p>`;
+    const botP = document.createElement('p');
+    const botStrong = document.createElement('strong');
+    botStrong.textContent = 'Bot:';
+    botP.appendChild(botStrong);
+    botP.appendChild(document.createTextNode(' ' + svar));
+    logg.appendChild(botP);
     input.value = '';
     logg.scrollTop = logg.scrollHeight;
 });
