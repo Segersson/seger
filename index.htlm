@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <title>Socialtjänstchatt</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Fråga om nya socialtjänstlagen</h1>
+    <div class="chatbox">
+        <div id="chatlog"></div>
+        <form id="chat-form">
+            <input type="text" id="fråga" placeholder="Ställ en fråga..." required>
+            <button type="submit">Skicka</button>
+        </form>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
